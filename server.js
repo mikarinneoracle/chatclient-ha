@@ -14,6 +14,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get('/config/', function(req, res) {
+  console.log(server);
   res.send({ 'server': server });
 });
 

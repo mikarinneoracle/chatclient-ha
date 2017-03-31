@@ -44,22 +44,19 @@
         socket.send(JSON.stringify(message));
         document.getElementById("message").value = "";
       }
-      window.onload = function () {
+      $(document).ready(function() {
         $( "#titleForm" ).fadeIn( "slow", function() {
           $( "#welcomeForm" ).fadeIn( "slow", function() {
             // Animation complete.
           });
         });
-        server = "CHAT_SERVER_URL";
-        if(server.indexOf("ws") == -1)
-        {
-          $.getJSON('/config', function(data) {
+        $.getJSON('/config', function(data) {
             server = data.server;
+            console.log(server);
           }).fail(function(jqXHR, textStatus, errorThrown) {
             console.log(textStatus);
-          });
-        }
-      }
+        });
+      });
     </script>
   </head>
   <body>
