@@ -50,19 +50,16 @@
             // Animation complete.
           });
         });
-        server = "CHAT_SERVER_URL";
-        if(server.indexOf("ws") == -1)
-        {
-          $.getJSON('/config', function(data) {
-            server = data.server;
-          }).fail(function(jqXHR, textStatus, errorThrown) {
-            console.log(textStatus);
-          })
-        }
+        $.getJSON('/config', function(data) {
+          server = data.server;
+          console.log(server);
+        }).fail(function(jqXHR, textStatus, errorThrown) {
+          console.log(textStatus);
+        });
       }
     </script>
   </head>
-  <body>
+  <body style="background-color: #85C1E9;">
     <div class="container" id="titleForm" style="display: none;">
       <h1>WebSocket Chat</h1>
     </div>
