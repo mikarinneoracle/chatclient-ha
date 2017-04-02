@@ -50,15 +50,19 @@
         document.getElementById("message").value = "";
       }
       $(document).ready(function() {
-        $( "#titleForm" ).fadeIn( "slow", function() {
-          $( "#welcomeForm" ).fadeIn( "slow", function() {
-            // Animation complete.
-          });
-        });
-        $.getJSON(proxy + '/config', function(data) {
-            server = data.server;
+        $.getJSON('/version', function(data) {
             $( "#version" ).html(data.version);
-            console.log(server);
+            $( "#titleForm" ).fadeIn( "slow", function() {
+              $( "#welcomeForm" ).fadeIn( "slow", function() {
+                // Animation complete.
+              });
+            });
+            $.getJSON(proxy + '/config', function(data) {
+                server = data.server;
+                console.log(server);
+              }).fail(function(jqXHR, textStatus, errorThrown) {
+                console.log(textStatus);
+            });
           }).fail(function(jqXHR, textStatus, errorThrown) {
             console.log(textStatus);
         });
