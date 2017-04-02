@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.js"></script>
     <script>
+      var proxy = 'PROXY_SVC';
+      if(proxy == '/PROXY_SVC')
+      {
+        proxy = '';
+      }
       var user;
       var socket;
       var server;
@@ -50,8 +55,9 @@
             // Animation complete.
           });
         });
-        $.getJSON('/config', function(data) {
+        $.getJSON(proxy + '/config', function(data) {
             server = data.server;
+            $( "#version" ).html(data.version);
             console.log(server);
           }).fail(function(jqXHR, textStatus, errorThrown) {
             console.log(textStatus);
@@ -61,7 +67,7 @@
   </head>
   <body>
     <div class="container" id="titleForm" style="display: none;">
-      <h1>WebSocket Chat</h1>
+      <h1>WebSocket Chat <span id="version"></span></h1>
     </div>
     <p>
     <div class="container" id="welcomeForm" style="display: none;">
