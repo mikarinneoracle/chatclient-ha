@@ -1,6 +1,6 @@
 {
   "name": "chatclient",
-  "version": "2.2.0",
+  "version": "2.2.5",
   "description": "chat ws client",
   "main": "server.js",
   "scripts": {
