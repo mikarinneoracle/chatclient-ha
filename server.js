@@ -8,19 +8,19 @@ var version = process.env.npm_package_version || '2.0';
 
 var app = express();
 
-app.use(bodyParser.json());
-app.use(express.static(__dirname));
-
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-
 app.use(session(
   { secret: 'chatclientsecret123456789!',
     resave: false, saveUninitialized: true,
     cookie: { maxAge: 60000 }
   }
 ));
+
+app.use(bodyParser.json());
+app.use(express.static(__dirname));
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 app.get('/config/', function(req, res) {
   var s = req.session;
